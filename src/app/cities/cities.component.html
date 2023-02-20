@@ -1,0 +1,28 @@
+<h2>Cities</h2>
+<ul class="cities">
+  <li *ngFor="let city of cities">
+    <button [class.selected]="city === selectedCity" type="button" (click)="onSelect(city)">
+      <span class="badge">{{city.id}}</span>
+      <span class="name">{{city.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedCity">
+    <h2>{{selectedCity.name | uppercase}} Details</h2>
+    <div>id: {{selectedCity.id}}</div>
+    <div>
+      <label for="city-name">City name: </label>
+      <input id="city-name" [(ngModel)]="selectedCity.name" placeholder="name">
+    </div>
+    <div>
+      <label for="city-lat">Latitude: </label>
+      <input id="city-lat" [(ngModel)]="selectedCity.lat" placeholder="lat">
+    </div>
+    <div>
+      <label for="city-lon">Longitude: </label>
+      <input id="city-lon" [(ngModel)]="selectedCity.lon" placeholder="lon">
+    </div>
+    <div>json: {{temperatures | json}}</div>
+  </div>
+
